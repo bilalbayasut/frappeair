@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe import _
+import random
 
 class AirplaneTicket(Document):
 	# begin: auto-generated types
@@ -49,6 +50,11 @@ class AirplaneTicket(Document):
 		print(f"setting total_amount {total_amount}")
 		self.total_amount = total_amount
 	
+	def generate_seat(self):
+		random_integer = random.randint(1, 100)  # Random integer between 1 and 100
+		random_alphabet = random.choice("ABCDE")  # Randomly choose from A to E
+		self.seat = f"{random_integer}{random_alphabet}" 
+	
 	def validate(self):
 		self.validate_unique_add_ons()
 	
@@ -59,3 +65,6 @@ class AirplaneTicket(Document):
 		# Check if the status is 'Boarded'
 		if self.status != 'Boarded':
 			frappe.throw(_("You cannot submit the Airplane Ticket unless the status is 'Boarded'."))
+	
+	def before_insert(self):
+		self.generate_seat()

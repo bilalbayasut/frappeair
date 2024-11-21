@@ -27,10 +27,10 @@ function calculate_total_amount(frm) {
     frm.set_value('total_amount', total_amount);
 
     // Optional: Provide real-time feedback to the user
-    frappe.msgprint({
+    frappe.show_alert({
         title: __('Total Amount Updated'),
         message: __('The total amount has been recalculated to {0}', [total_amount]),
-        indicator: 'green',
+        indicator: 'blue',
     });
 }
 frappe.ui.form.on('Airplane Ticket Add-on Item', {

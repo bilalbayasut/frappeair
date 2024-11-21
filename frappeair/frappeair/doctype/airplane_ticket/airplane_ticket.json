@@ -7,26 +7,28 @@
  "engine": "InnoDB",
  "field_order": [
   "flight_details_section",
-  "status",
   "passenger",
-  "source_airport",
-  "source_airport_code",
+  "status",
   "column_break_ycvz",
   "flight",
-  "destination_airport",
+  "seat",
+  "section_break_dfwh",
+  "source_airport_code",
+  "column_break_fjqd",
   "destination_airport_code",
-  "section_break_tnr3",
-  "column_break_odig",
-  "departure_date",
-  "departure_time",
-  "column_break_oyag",
-  "duration_of_flight",
-  "amended_from",
   "add_ons_section",
   "add_ons",
   "pricings_section",
   "flight_price",
-  "total_amount"
+  "column_break_tjqs",
+  "total_amount",
+  "section_break_tnr3",
+  "column_break_odig",
+  "date_of_departure",
+  "time_of_departure",
+  "column_break_oyag",
+  "duration",
+  "amended_from"
  ],
  "fields": [
   {
@@ -45,23 +47,7 @@
    "search_index": 1
   },
   {
-   "fieldname": "source_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Source Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fieldname": "destination_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Destination Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "source_airport.code",
+   "fetch_from": "flight.source_airport_code",
    "fieldname": "source_airport_code",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -73,7 +59,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "destination_airport.code",
+   "fetch_from": "flight.destination_airport_code",
    "fieldname": "destination_airport_code",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -84,20 +70,7 @@
    "fieldname": "flight",
    "fieldtype": "Link",
    "label": "Flight",
-   "options": "Airplane",
-   "reqd": 1
-  },
-  {
-   "fieldname": "departure_date",
-   "fieldtype": "Date",
-   "in_standard_filter": 1,
-   "label": "Departure Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "duration_of_flight",
-   "fieldtype": "Duration",
-   "label": "Duration Of Flight",
+   "options": "Airplane Flight",
    "reqd": 1
   },
   {
@@ -112,12 +85,6 @@
   {
    "fieldname": "column_break_ycvz",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "departure_time",
-   "fieldtype": "Time",
-   "label": "Departure Time",
-   "reqd": 1
   },
   {
    "default": "Booked",
@@ -167,12 +134,50 @@
    "non_negative": 1,
    "precision": "0",
    "read_only": 1
+  },
+  {
+   "fetch_from": "flight.date_of_departure",
+   "fieldname": "date_of_departure",
+   "fieldtype": "Data",
+   "label": "Date Of Departure",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "flight.time_of_departure",
+   "fieldname": "time_of_departure",
+   "fieldtype": "Time",
+   "label": "Time Of Departure",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "flight.duration",
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "seat",
+   "fieldtype": "Data",
+   "label": "Seat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_dfwh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fjqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tjqs",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-21 16:48:27.599280",
+ "modified": "2024-11-21 20:38:02.288066",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Ticket",

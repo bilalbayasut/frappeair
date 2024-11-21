@@ -54,3 +54,8 @@ class AirplaneTicket(Document):
 	
 	def before_save(self):
 		self.calculate_total_amount()
+
+	def before_submit(self):
+		# Check if the status is 'Boarded'
+		if self.status != 'Boarded':
+			frappe.throw(_("You cannot submit the Airplane Ticket unless the status is 'Boarded'."))

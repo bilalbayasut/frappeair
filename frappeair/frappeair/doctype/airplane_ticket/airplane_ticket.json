@@ -165,13 +165,14 @@
    "fieldtype": "Currency",
    "label": "Total Amount",
    "non_negative": 1,
+   "precision": "0",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-21 16:39:38.366853",
+ "modified": "2024-11-21 16:48:27.599280",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Ticket",

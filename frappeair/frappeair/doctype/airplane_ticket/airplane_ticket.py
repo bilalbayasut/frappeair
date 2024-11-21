@@ -8,20 +8,7 @@ from frappe import _
 class AirplaneTicket(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
-
-	def validate_unique_add_ons(self):
-		add_on_names = set()  # Set to store unique add-ons
-		for row in self.add_ons:  # Assuming "add_ons" is the child table fieldname
-			if row.airplane_ticket_add_on_type in add_on_names:
-				frappe.throw(_("Duplicate Add-on: {0}").format(row.airplane_ticket_add_on_type))
-			add_on_names.add(row.airplane_ticket_add_on_type)
-
-	def validate(self):
-		self.validate_unique_add_ons()
-
-	
 	from typing import TYPE_CHECKING
-
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
@@ -36,10 +23,34 @@ class AirplaneTicket(Document):
 		source_airport: DF.Link
 		source_airport_code: DF.Data | None
 		status: DF.Literal["Booked", "Checked-In", "Boarded"]
+
+	def validate_unique_add_ons(self):
+		 # Check for duplicate add-ons
+			unique_add_ons = []
+			seen_add_ons = set()
+
+			for add_on in self.add_ons:
+				if add_on.airplane_ticket_add_on_type in seen_add_ons:
+					# Log the duplicate for debugging
+					frappe.msgprint(
+						_("Duplicate Add-on '{0}' found and removed.").format(add_on.airplane_ticket_add_on_type),
+						alert=True,
+					)
+				else:
+					seen_add_ons.add(add_on.airplane_ticket_add_on_type)
+					unique_add_ons.append(add_on)
+
+			# Overwrite the child table with only unique rows
+			self.add_ons = unique_add_ons
 	
-	def before_submit(self):
-		self.calculate_total_amount()
 	# end: auto-generated types
 	def calculate_total_amount(self):
-		# self.total_amount = self.total_amount + self.flight_price
-		self.total_amount = self.flight_price + sum(add_on.price for add_on in self.add_ons)
+		total_amount = self.flight_price + sum(add_on.amount for add_on in self.add_ons)
+		print(f"setting total_amount {total_amount}")
+		self.total_amount = total_amount
+	
+	def validate(self):
+		self.validate_unique_add_ons()
+	
+	def before_save(self):
+		self.calculate_total_amount()

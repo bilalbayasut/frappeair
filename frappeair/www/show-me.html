@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Me Colors</title>
+    <style>
+        .rectangle {
+            width: 200px;
+            height: 100px;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Show Me Colors</h1>
+    <div 
+        class="rectangle" 
+        style="background-color: {{ frappe.form_dict.color or 'black' }};">
+        {{ frappe.form_dict.color or 'Black' }}
+    </div>
+</body>
+</html>

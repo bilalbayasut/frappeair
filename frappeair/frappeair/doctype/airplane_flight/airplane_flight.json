@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "format:{airplane}-{MM}-{YY}",
  "creation": "2024-11-21 19:44:19.840632",
@@ -9,7 +10,9 @@
   "amended_from",
   "airplane",
   "column_break_ujek",
+  "is_published",
   "status",
+  "route",
   "airport_details_section",
   "source_airport",
   "source_airport_code",
@@ -118,9 +121,23 @@
   {
    "fieldname": "column_break_ujek",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Publish ?"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [
   {
@@ -128,7 +145,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2024-11-21 21:04:00.343944",
+ "modified": "2024-11-22 13:17:42.660478",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Flight",
@@ -149,6 +166,7 @@
    "write": 1
   }
  ],
+ "route": "flights",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": []

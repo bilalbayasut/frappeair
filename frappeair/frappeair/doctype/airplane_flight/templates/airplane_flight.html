@@ -1,0 +1,20 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+{% set airplane_doc = frappe.get_doc('Airplane', doc.airplane) %}
+<h1>{{ title |e }}</h1>
+<div class="card">
+    <div class="card-header">
+      Flight Details
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Airline: {{ (airplane_doc.airline) |e }}</h5>
+      <p class="card-text">{{ doc.source_airport_code }} 🠪 {{ doc.destination_airport_code }}</p>
+      <p class="card-text">{{ frappe.format_date(doc.date_of_departure) }} | {{ doc.time_of_departure}}</p>
+      <p class="card-text">Duration: {{frappe.format(doc.duration, {'fieldtype': 'Duration'})}}</p>
+      <a href="#" class="btn btn-primary">Book Flight</a>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- this is a sample default web page template -->

@@ -12,7 +12,7 @@
       <p class="card-text">{{ doc.source_airport_code }} 🠪 {{ doc.destination_airport_code }}</p>
       <p class="card-text">{{ frappe.format_date(doc.date_of_departure) }} | {{ doc.time_of_departure}}</p>
       <p class="card-text">Duration: {{frappe.format(doc.duration, {'fieldtype': 'Duration'})}}</p>
-      <a href="#" class="btn btn-primary">Book Flight</a>
+      <a href="{{ frappe.utils.get_url('/book-flight-ticket/new?flight_id={}'.format(doc.name)) }}" class="btn btn-primary">Book Flight</a>
     </div>
   </div>
 {% endblock %}

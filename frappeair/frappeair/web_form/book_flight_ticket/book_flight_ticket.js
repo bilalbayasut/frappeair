@@ -1,5 +1,12 @@
 frappe.ready(function() {
 	// bind events here
+
+	const urlParams = new URLSearchParams(window.location.search);
+    const flightId = urlParams.get('flight_id');
+
+    if (flightId) {
+        frappe.web_form.set_value('flight', flightId);
+    }
 	
 	frappe.web_form.on('flight', function(field, value) {
 		// console.log(`${field} - ${value}`)

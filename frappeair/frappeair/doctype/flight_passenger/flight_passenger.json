@@ -6,8 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "first_name",
-  "full_name",
   "last_name",
+  "full_name",
   "date_of_birth"
  ],
  "fields": [
@@ -45,7 +45,7 @@
    "link_fieldname": "passenger"
   }
  ],
- "modified": "2024-11-20 20:25:00.513473",
+ "modified": "2024-11-23 15:16:59.255141",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Flight Passenger",
@@ -69,5 +69,5 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "first_name"
+ "title_field": "full_name"
 }

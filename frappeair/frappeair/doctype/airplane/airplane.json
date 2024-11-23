@@ -24,7 +24,8 @@
    "in_list_view": 1,
    "label": "Airline",
    "options": "Airline",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "capacity",
@@ -37,7 +38,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-20 18:36:08.635811",
+ "modified": "2024-11-23 20:42:49.471557",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane",

@@ -22,4 +22,12 @@ class FlightPassenger(Document):
 
 	@property
 	def full_name(self):
-		return f"{self.first_name} {self.last_name}"
+		if self.first_name and self.last_name:
+			return f"{self.first_name} {self.last_name}"
+		elif self.first_name:  # Last name is missing
+			return self.first_name
+		elif self.last_name:  # First name is missing
+			return self.last_name
+		else:  # Both are missing
+			return ""
+		# return f"{self.first_name} {self.last_name}"

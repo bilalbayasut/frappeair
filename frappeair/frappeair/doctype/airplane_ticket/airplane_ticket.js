@@ -5,6 +5,7 @@ frappe.ui.form.on("Airplane Ticket", {
 	// Trigger when the form is refreshed or loaded
     refresh: function (frm) {
         calculate_total_amount(frm);
+        assign_seat_number(frm);
     },
 
     // Trigger when flight_price is updated
@@ -33,6 +34,43 @@ function calculate_total_amount(frm) {
         indicator: 'blue',
     });
 }
+
+function assign_seat_number(frm) {
+    // Ensure "Actions" dropdown exists
+    if (!frm.page.actions_btn_group) {
+        frm.page.add_action_icon_group();
+    }
+
+    // Add a custom button under the Actions dropdown
+    frm.page.add_action_item('Set Seat Number', function () {
+        // Create a dialog to input the seat number
+        const dialog = new frappe.ui.Dialog({
+            title: 'Set Seat Number',
+            fields: [
+                {
+                    label: 'Seat Number',
+                    fieldname: 'seat',
+                    fieldtype: 'Data',
+                    reqd: 1, // Make the field required
+                },
+            ],
+            primary_action_label: 'Set Seat',
+            primary_action(values) {
+                // Set the seat number to the Seat field in the form
+                if (values.seat) {
+                    frm.set_value('seat', values.seat);
+                    dialog.hide(); // Close the dialog after setting the value
+                } else {
+                    frappe.msgprint(__('Please enter a seat number.'));
+                }
+            },
+        });
+
+        // Show the dialog
+        dialog.show();
+    });
+}
+
 frappe.ui.form.on('Airplane Ticket Add-on Item', {
     validate: function (frm) {
         console.log(`validated ${frm}`);
@@ -70,3 +108,4 @@ frappe.ui.form.on('Airplane Ticket Add-on Item', {
         calculate_total_amount(frm);
     },
 });
+

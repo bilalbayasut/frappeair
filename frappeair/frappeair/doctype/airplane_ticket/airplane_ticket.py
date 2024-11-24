@@ -55,8 +55,24 @@ class AirplaneTicket(Document):
 		random_alphabet = random.choice("ABCDE")  # Randomly choose from A to E
 		self.seat = f"{random_integer}{random_alphabet}" 
 	
+	def validate_capacity(self):
+		# Fetch the flight and its associated airplane
+		flight = frappe.get_doc('Airplane Flight', self.flight)
+		airplane = frappe.get_doc('Airplane', flight.airplane)
+
+		# Get the capacity of the airplane
+		airplane_capacity = airplane.capacity
+
+		# Count the number of tickets already issued for the flight
+		ticket_count = frappe.db.count('Airplane Ticket', filters={'flight': self.flight})
+
+		# Check if the ticket count exceeds the capacity
+		if ticket_count >= airplane_capacity:
+			frappe.throw(f'The airplane has reached its capacity of {airplane_capacity} seats. No more tickets can be issued for this flight.')
+
 	def validate(self):
 		self.validate_unique_add_ons()
+		self.validate_capacity()
 	
 	def before_save(self):
 		self.calculate_total_amount()

@@ -42,7 +42,7 @@ function assign_seat_number(frm) {
     }
 
     // Add a custom button under the Actions dropdown
-    frm.page.add_action_item('Set Seat Number', function () {
+    frm.add_custom_button('Set Seat Number', function () {
         // Create a dialog to input the seat number
         const dialog = new frappe.ui.Dialog({
             title: 'Set Seat Number',

@@ -22,29 +22,30 @@ def get_cols():
 
 # bench --site frappe.fullstack execute airplane_mode.airplane_mode.report.revenue_by_airline.revenue_by_airline.get_data
 def get_data():
-	# Fetch all airlines
-	airlines = frappe.get_all("Airline", fields=["name"])
+    # Fetch all airlines
+    airlines = frappe.get_all("Airline", fields=["name"])
 
-	data = []
+    data = []
 
-	for airline in airlines:
-		# Calculate the total revenue per airline, including add-ons
-		revenue = frappe.db.sql("""
-			SELECT SUM(t.flight_price + IFNULL(ai.total_addon_amount, 0)) AS total_revenue
-			FROM `tabAirplane Ticket` t
-			JOIN `tabAirplane Flight` f ON t.flight = f.name
-			JOIN `tabAirplane` a ON f.airplane = a.name
-			LEFT JOIN (
-				SELECT parent, SUM(amount) AS total_addon_amount
-				FROM `tabAirplane Ticket Add-on Item`
-				GROUP BY parent
-			) ai ON t.name = ai.parent
-			WHERE a.airline = %s
-		""", (airline.name), as_list=True)[0][0] or 0.0
+    for airline in airlines:
+        # Calculate the total revenue per airline, including add-ons
+        revenue = frappe.db.sql("""
+            SELECT SUM(t.flight_price + IFNULL(ai.total_addon_amount, 0)) AS total_revenue
+            FROM `tabAirplane Ticket` t
+            JOIN `tabAirplane Flight` f ON t.flight = f.name
+            JOIN `tabAirplane` a ON f.airplane = a.name
+            LEFT JOIN (
+                SELECT parent, SUM(amount) AS total_addon_amount
+                FROM `tabAirplane Ticket Add-on Item`
+                GROUP BY parent
+            ) ai ON t.name = ai.parent
+            WHERE a.airline = %s
+        """, (airline.name), as_list=True)[0][0] or 0.0
 
-		# Append the airline and its revenue
-		data.append([airline.name, revenue])
-	return data
+        # Append the airline and its revenue, even if revenue is 0
+        data.append([airline.name, revenue])
+
+    return data
 
 def get_chart_data(data):
 	labels = [row[0] for row in data]  # Airline names
@@ -69,12 +70,6 @@ def execute(filters=None):
 	data = get_data()
 	chart = get_chart_data(data)
 	total_revenue = sum(row[1] for row in data)
-	data.append(["Total Revenue", total_revenue])
-
-	# Include a summary row for total revenue
-	# summary = [
-	# 	{'label': 'Total Revenue', 'value': frappe.format_value(total_revenue, 'Currency')}
-	# ]
 	summary = [
 		{'label': 'Total Revenue', 'value': total_revenue}
 	]

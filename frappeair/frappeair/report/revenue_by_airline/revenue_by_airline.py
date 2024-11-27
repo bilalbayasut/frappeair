@@ -72,8 +72,10 @@ def execute(filters=None):
 	data.append(["Total Revenue", total_revenue])
 
 	# Include a summary row for total revenue
+	# summary = [
+	# 	{'label': 'Total Revenue', 'value': frappe.format_value(total_revenue, 'Currency')}
+	# ]
 	summary = [
-		{'label': 'Total Revenue', 'value': frappe.format_value(total_revenue, 'Currency')}
+		{'label': 'Total Revenue', 'value': total_revenue}
 	]
-
 	return columns, data, None, chart, summary

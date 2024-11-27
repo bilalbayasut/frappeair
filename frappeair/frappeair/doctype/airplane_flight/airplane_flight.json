@@ -23,7 +23,9 @@
   "date_of_departure",
   "duration",
   "column_break_eeov",
-  "time_of_departure"
+  "time_of_departure",
+  "crew_members_section",
+  "crew_members"
  ],
  "fields": [
   {
@@ -133,6 +135,17 @@
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Publish ?"
+  },
+  {
+   "fieldname": "crew_members_section",
+   "fieldtype": "Section Break",
+   "label": "Crew Members"
+  },
+  {
+   "fieldname": "crew_members",
+   "fieldtype": "Table",
+   "label": "Crew Members",
+   "options": "Crew Members"
   }
  ],
  "has_web_view": 1,
@@ -145,7 +158,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2024-11-26 11:55:18.766092",
+ "modified": "2024-11-27 11:47:08.016038",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Flight",

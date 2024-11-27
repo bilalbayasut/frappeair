@@ -12,6 +12,7 @@
   "column_break_ycvz",
   "flight",
   "seat",
+  "gate_number",
   "section_break_dfwh",
   "source_airport_code",
   "column_break_fjqd",
@@ -174,12 +175,18 @@
   {
    "fieldname": "column_break_tjqs",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gate_number",
+   "fieldtype": "Link",
+   "label": "Gate Number",
+   "options": "Gate Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-26 11:56:43.589826",
+ "modified": "2024-11-27 13:24:52.146034",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Ticket",

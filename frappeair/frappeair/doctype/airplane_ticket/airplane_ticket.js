@@ -6,13 +6,30 @@ frappe.ui.form.on("Airplane Ticket", {
     refresh: function (frm) {
         calculate_total_amount(frm);
         assign_seat_number(frm);
+        set_gate_number(frm);
     },
 
     // Trigger when flight_price is updated
     flight_price: function (frm) {
         calculate_total_amount(frm);
+    },
+
+    destination_airport: function (frm) {
+        // Filter Gate Numbers based on the selected Destination Airport Code
+        set_gate_number(frm);
     }
 });
+
+function set_gate_number(frm) {
+    console.log(`setting correct gate_number ${frm.doc.destination_airport_code}`)
+    frm.set_query('gate_number', function () {
+        return {
+            filters: {
+                airport_code: frm.doc.destination_airport_code // Match with the destination airport
+            }
+        };
+    });
+}
 // Function to calculate total amount
 function calculate_total_amount(frm) {
     // Calculate the total amount from flight_price and add_ons

@@ -147,6 +147,14 @@ app_license = "agpl-3.0"
 # 		"on_trash": "method"
 # 	}
 # }
+doc_events = {
+    "Airplane Flight": {
+        "on_update": "frappeair.frappeair.doctype.airplane_flight.airplane_flight.update_tickets_gate"
+    },
+    "Rent Payment": {
+        "before_insert": "frappeair.frappeair.doctype.rent_payment.before_insert"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -168,6 +176,12 @@ app_license = "agpl-3.0"
 # 		"frappeair.tasks.monthly"
 # 	],
 # }
+
+scheduler_events = {
+    "monthly": [
+        "frappeair.tasks.send_rent_reminders.send_rent_reminders"
+    ]
+}
 
 # Testing
 # -------

@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{airport}-{shop_number}",
+ "creation": "2024-11-27 14:32:53.857738",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shop_number",
+  "shop_name",
+  "physical_area",
+  "airport",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "label": "Shop Name"
+  },
+  {
+   "fieldname": "physical_area",
+   "fieldtype": "Float",
+   "label": "Physical Area"
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "label": "Airport",
+   "options": "Airport"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Available\nLeased"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-27 18:08:28.426487",
+ "modified_by": "Administrator",
+ "module": "Frappeair Shop Management",
+ "name": "Shop",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "shop_name"
+}

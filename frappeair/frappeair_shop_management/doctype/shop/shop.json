@@ -6,6 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "is_published",
+  "route",
   "airport",
   "shop_number",
   "shop_name",
@@ -56,11 +58,25 @@
    "label": "Tenant",
    "options": "Tenant",
    "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Publish ?"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
  "links": [],
- "modified": "2024-11-29 17:10:30.481731",
+ "modified": "2024-11-29 17:40:48.502494",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Shop",
@@ -80,6 +96,7 @@
    "write": 1
   }
  ],
+ "route": "shops",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],

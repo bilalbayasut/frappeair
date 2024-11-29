@@ -1,0 +1,21 @@
+{% extends "templates/web.html" %}
+
+{% block content %}
+<div class="container">
+<h1>Available Shops</h1>
+
+{% if available_shops %}
+  <ul>
+    {% for shop in available_shops %}
+      <li>
+        <strong>{{ shop.name }}</strong><br>
+        Shop ID: {{ shop.shop_number }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No shops available.</p>
+{% endif %}
+
+{% endblock %}
+</div>

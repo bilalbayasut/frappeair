@@ -24,6 +24,7 @@
   "duration",
   "column_break_eeov",
   "time_of_departure",
+  "gate_number",
   "crew_members_section",
   "crew_members"
  ],
@@ -146,6 +147,11 @@
    "fieldtype": "Table",
    "label": "Crew Members",
    "options": "Crew Members"
+  },
+  {
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "label": "Gate Number"
   }
  ],
  "has_web_view": 1,
@@ -158,7 +164,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2024-11-27 11:47:08.016038",
+ "modified": "2024-11-29 17:33:50.123848",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airplane Flight",

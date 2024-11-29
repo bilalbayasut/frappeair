@@ -150,9 +150,6 @@ app_license = "agpl-3.0"
 doc_events = {
     "Airplane Flight": {
         "on_update": "frappeair.frappeair.doctype.airplane_flight.airplane_flight.update_tickets_gate"
-    },
-    "Rent Payment": {
-        "before_insert": "frappeair.frappeair.doctype.rent_payment.before_insert"
     }
 }
 

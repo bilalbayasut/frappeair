@@ -46,13 +46,12 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Due\nPaid\nOverdue",
-   "read_only": 1
+   "options": "Due\nPaid\nOverdue"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-27 18:05:41.361336",
+ "modified": "2024-11-29 13:48:47.206841",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Lease Contract",

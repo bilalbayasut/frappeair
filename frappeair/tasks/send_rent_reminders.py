@@ -23,6 +23,8 @@ def send_rent_reminders():
         The rent amount is {frappe.format(rent_amount, 'Currency')}.
         
         Please make the payment to avoid late fees.
+        
+        Ignore this email if you have already made payment.
 
         Thank you,
         The Airport Authority

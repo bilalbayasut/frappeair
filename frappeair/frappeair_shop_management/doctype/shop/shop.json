@@ -8,6 +8,7 @@
  "field_order": [
   "shop_number",
   "shop_name",
+  "rent_amount",
   "physical_area",
   "airport",
   "status"
@@ -24,9 +25,11 @@
   {
    "fieldname": "shop_name",
    "fieldtype": "Data",
-   "label": "Shop Name"
+   "label": "Shop Name",
+   "reqd": 1
   },
   {
+   "default": "20",
    "fieldname": "physical_area",
    "fieldtype": "Float",
    "label": "Physical Area"
@@ -35,18 +38,26 @@
    "fieldname": "airport",
    "fieldtype": "Link",
    "label": "Airport",
-   "options": "Airport"
+   "options": "Airport",
+   "reqd": 1
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "Available\nLeased"
+  },
+  {
+   "fieldname": "rent_amount",
+   "fieldtype": "Currency",
+   "label": "Rent Amount",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-27 18:08:28.426487",
+ "modified": "2024-11-28 20:09:18.749922",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Shop",

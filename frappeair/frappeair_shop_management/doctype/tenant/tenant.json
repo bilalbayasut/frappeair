@@ -8,8 +8,7 @@
  "field_order": [
   "tenant_name",
   "email",
-  "phone_number",
-  "table_shops"
+  "phone_number"
  ],
  "fields": [
   {
@@ -27,17 +26,11 @@
    "fieldname": "phone_number",
    "fieldtype": "Phone",
    "label": "Phone Number"
-  },
-  {
-   "fieldname": "table_shops",
-   "fieldtype": "Table",
-   "label": "Shops",
-   "options": "Linked Shop"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-27 20:06:08.698871",
+ "modified": "2024-11-28 20:01:03.855119",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Tenant",

@@ -20,6 +20,7 @@
   {
    "fieldname": "shop",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shop",
    "options": "Shop"
   },
@@ -31,12 +32,13 @@
   {
    "fieldname": "payment_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Payment Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-27 16:00:03.079787",
+ "modified": "2024-11-29 09:34:04.011147",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Rent Payment",

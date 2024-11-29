@@ -12,6 +12,6 @@ frappe.ui.form.on("Rent Payment", {
 
             // Open the print URL in a new tab
             window.open(print_url, '_blank');
-        }, __('Actions')); // Add the button under the "Actions" group
+        }); // Add the button under the "Actions" group
 	},
 });

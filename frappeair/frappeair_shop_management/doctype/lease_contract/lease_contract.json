@@ -1,13 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "hash",
+ "autoname": "format:CONTRACT-{shop}-{tenant}",
  "creation": "2024-11-27 15:37:53.519057",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "tenant",
   "shop",
+  "tenant",
   "rent_amount",
   "contract_start_date",
   "contract_end_date",
@@ -46,16 +46,16 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Due\nPaid\nOverdue"
+   "options": "Active\nExpired\nTerminated"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-29 13:48:47.206841",
+ "modified": "2024-11-29 14:14:02.030714",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Lease Contract",
- "naming_rule": "Random",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

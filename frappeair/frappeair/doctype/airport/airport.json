@@ -8,7 +8,9 @@
  "field_order": [
   "code",
   "city",
-  "country"
+  "country",
+  "total_shops",
+  "available_shops"
  ],
  "fields": [
   {
@@ -31,11 +33,25 @@
    "in_list_view": 1,
    "label": "Country",
    "reqd": 1
+  },
+  {
+   "fieldname": "total_shops",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Shops",
+   "read_only": 1
+  },
+  {
+   "fieldname": "available_shops",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Available Shops",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-26 11:17:29.206898",
+ "modified": "2024-11-29 14:40:11.353864",
  "modified_by": "Administrator",
  "module": "Frappeair",
  "name": "Airport",

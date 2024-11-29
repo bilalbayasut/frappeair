@@ -2,13 +2,19 @@ import frappe
 from frappe.utils import nowdate
 
 def send_rent_reminders():
-    # Fetch all lease contracts where the status is 'Due' or 'Overdue'
-    lease_contracts = frappe.get_all("Lease Contract", filters={
-        'status': ['in', ['Due', 'Overdue']],
-        'contract_end_date': ['<=', nowdate()]
+
+    # Check if rent reminders are enabled in configuration
+    config = frappe.get_doc("Shop Settings")
+    if not config.enable_rent_reminders:
+        return
+
+    # Find active rent contracts due this month
+    contracts = frappe.get_all("Lease Contract", filters={
+        'status': "Active",
+        'contract_end_date': ['>=', nowdate()]
     },
     fields=['tenant','shop','contract_start_date','contract_end_date','rent_amount','status'])
-    for contract in lease_contracts:
+    for contract in contracts:
         # Fetch details like tenant, shop, rent amount, etc.
         tenant = frappe.get_doc("Tenant", contract.tenant)
         shop = frappe.get_doc("Shop", contract.shop)

@@ -1,47 +1,74 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:PAYMENT-{payment_date}-{###}",
  "creation": "2024-11-27 15:39:51.716023",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "tenant",
-  "shop",
+  "lease_contract",
+  "due_date",
   "rent_amount_paid",
-  "payment_date"
+  "amended_from",
+  "shop",
+  "tenant"
  ],
  "fields": [
   {
-   "fieldname": "tenant",
-   "fieldtype": "Link",
-   "label": "Tenant",
-   "options": "Tenant"
-  },
-  {
-   "fieldname": "shop",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Shop",
-   "options": "Shop"
-  },
-  {
    "fieldname": "rent_amount_paid",
    "fieldtype": "Currency",
-   "label": "Rent Amount Paid"
+   "label": "Rent Amount Paid",
+   "non_negative": 1,
+   "precision": "0"
   },
   {
-   "fieldname": "payment_date",
+   "fieldname": "lease_contract",
+   "fieldtype": "Link",
+   "label": "Lease Contract",
+   "options": "Lease Contract",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rent Payment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "due_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Payment Date"
+   "label": "Due Date"
+  },
+  {
+   "fetch_from": "lease_contract.shop",
+   "fieldname": "shop",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Shop",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "lease_contract.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Tenant",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-11-29 09:34:04.011147",
+ "modified": "2024-11-29 17:07:07.170593",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Rent Payment",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

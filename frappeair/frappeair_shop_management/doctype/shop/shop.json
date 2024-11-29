@@ -1,16 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{airport}-{shop_number}",
+ "autoname": "format:{airport}-{shop_name}",
  "creation": "2024-11-27 14:32:53.857738",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "airport",
   "shop_number",
   "shop_name",
-  "rent_amount",
   "physical_area",
-  "airport",
+  "tenant",
   "status"
  ],
  "fields": [
@@ -32,7 +32,7 @@
    "default": "20",
    "fieldname": "physical_area",
    "fieldtype": "Float",
-   "label": "Physical Area"
+   "label": "Physical Area (sq.m)"
   },
   {
    "fieldname": "airport",
@@ -46,18 +46,21 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Available\nLeased"
+   "options": "Available\nOccupied\nUnder Maintenance",
+   "read_only": 1
   },
   {
-   "fieldname": "rent_amount",
-   "fieldtype": "Currency",
-   "label": "Rent Amount",
-   "reqd": 1
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-28 20:09:18.749922",
+ "modified": "2024-11-29 17:10:30.481731",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Shop",

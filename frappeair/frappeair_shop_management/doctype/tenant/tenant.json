@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "hash",
+ "autoname": "format:{tenant_name}",
  "creation": "2024-11-27 14:35:57.139991",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -30,11 +30,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-28 20:01:03.855119",
+ "modified": "2024-11-29 17:06:35.274373",
  "modified_by": "Administrator",
  "module": "Frappeair Shop Management",
  "name": "Tenant",
- "naming_rule": "Random",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

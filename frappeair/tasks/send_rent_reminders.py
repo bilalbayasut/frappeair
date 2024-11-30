@@ -1,6 +1,7 @@
 import frappe
 from frappe.utils import nowdate
 
+
 def send_rent_reminders():
 
     # Check if rent reminders are enabled in configuration
@@ -9,11 +10,19 @@ def send_rent_reminders():
         return
 
     # Find active rent contracts due this month
-    contracts = frappe.get_all("Lease Contract", filters={
-        'status': "Active",
-        'contract_end_date': ['>=', nowdate()]
-    },
-    fields=['tenant','shop','contract_start_date','contract_end_date','rent_amount','status'])
+    contracts = frappe.get_all(
+        "Lease Contract",
+        filters={"status": "Active", "contract_end_date": [">=", nowdate()]},
+        fields=[
+            "tenant",
+            "shop",
+            "contract_start_date",
+            "contract_end_date",
+            "rent_amount",
+            "status",
+        ],
+    )
+    print(f"we have {len(contracts)} contracts")
     for contract in contracts:
         # Fetch details like tenant, shop, rent amount, etc.
         tenant = frappe.get_doc("Tenant", contract.tenant)
@@ -39,11 +48,7 @@ def send_rent_reminders():
         try:
             # Send the email
             frappe.sendmail(
-                recipients=tenant.email,
-                subject=email_subject,
-                message=email_message
+                recipients=tenant.email, subject=email_subject, message=email_message
             )
         except Exception as e:
             print(e)
-        
-

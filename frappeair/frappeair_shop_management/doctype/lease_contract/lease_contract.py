@@ -15,6 +15,8 @@ class LeaseContract(Document):
     def after_insert(self):
         # Automatically create Rent Payment entries for the Lease Contract
         create_rent_payments(self)
+        if self.shop:
+            update_shop_status(self.shop)
 
     def on_trash(self):
         # Update the Shop status and tenant when the Lease Contract is deleted
